@@ -1,7 +1,6 @@
 package com.spring.springinaction.domain;
 
 import lombok.Data;
-
 import java.util.List;
 
 @Data
