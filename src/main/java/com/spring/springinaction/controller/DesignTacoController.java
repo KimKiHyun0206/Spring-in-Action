@@ -56,21 +56,21 @@ public class DesignTacoController {
     }
 
     @ModelAttribute(name = "order")
-    public Order order(){
+    public Order order() {
         return new Order();
     }
 
     @ModelAttribute(name = "taco")
-    public Taco taco(){
+    public Taco taco() {
         return new Taco();
     }
 
 
     @PostMapping
     public String processDesign(@Valid Taco design,
-                                Errors errors, @ModelAttribute Order order){
+                                Errors errors, @ModelAttribute Order order) {
 
-        if(errors.hasErrors()){
+        if (errors.hasErrors()) {
             return "design";
         }
 

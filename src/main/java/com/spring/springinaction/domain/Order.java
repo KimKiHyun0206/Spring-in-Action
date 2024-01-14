@@ -1,14 +1,22 @@
 package com.spring.springinaction.domain;
 
-import jakarta.validation.constraints.Digits;
+import jakarta.persistence.*;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @Data
-public class Order {
+@Entity
+@Table(name = "Taco_Order")
+public class Order implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private Date placedAt;
     private String deliveryName;
@@ -20,8 +28,15 @@ public class Order {
     private String ccExpiration;
     private String ccCVV;
 
+    @ManyToMany(targetEntity = Taco.class)
     private List<Taco> tacos = new ArrayList<>();
-    public void addDesign(Taco design){
+
+    public void addDesign(Taco design) {
         this.tacos.add(design);
+    }
+
+    @PrePersist
+    void placeAt() {
+        this.placedAt = new Date();
     }
 }

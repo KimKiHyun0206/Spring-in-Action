@@ -1,9 +1,7 @@
 package com.spring.springinaction.repository;
 
 import com.spring.springinaction.domain.Ingredient;
+import org.springframework.data.repository.CrudRepository;
 
-public interface IngredientRepository {
-    Iterable<Ingredient> findAll();
-    Ingredient findById(String id);
-    Ingredient save(Ingredient ingredient);
+public interface IngredientRepository extends CrudRepository<Ingredient, String> {
 }
