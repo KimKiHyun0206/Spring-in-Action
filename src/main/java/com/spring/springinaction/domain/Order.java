@@ -4,6 +4,8 @@ import lombok.Data;
 
 @Data
 public class Order {
+    private Long id;
+    private Data placedAt;
     private String deliveryName;
     private String deliveryStreet;
     private String deliveryCity;
